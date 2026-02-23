@@ -56,11 +56,12 @@ This is an architecture playground.
 
 ## 🎥 Demo
 
-<p align="center">
-  <img src="Screenshots/demo.gif" width="300">
-</p>
+https://github.com/user-attachments/assets/be014bcf-bfc5-4dcf-a770-dad5f619a467
 
 ---
+
+
+
 
 ## 🛠 What’s Coming Next
 
