@@ -33,7 +33,32 @@ This is an architecture playground.
 - State-driven SwiftUI updates  
 - Clean, modular UI components  
 
-> Screenshots and screen recording available in the repository.
+---
+
+## 📸 App Preview
+
+### 🏠 Home Dashboard
+
+<p align="center">
+  <img src="Screenshots/home_screen.png" width="300">
+</p>
+
+---
+
+### 🔍 Search & Filter
+
+<p align="center">
+  <img src="Screenshots/home_screen_with_filter.png" width="300">
+    <img src="Screenshots/home_screen_with_search.png" width="300">
+</p>
+
+---
+
+## 🎥 Demo
+
+<p align="center">
+  <img src="Screenshots/demo.gif" width="300">
+</p>
 
 ---
 
