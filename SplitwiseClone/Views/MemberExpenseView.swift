@@ -8,46 +8,46 @@
 import SwiftUI
 
 struct MemberExpenseView: View {
-    @Binding var memberExpense: Expense
+    let memberExpense: Expense
     var body: some View {
-        VStack(alignment: .leading) {
-            HStack {
-                Image(memberExpense.profileImage ?? "")
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: 50.0, height: 50.0)
-                    .clipShape(Circle())
-                    .padding(.leading)
-                Text(memberExpense.memberName ?? "")
-                    .font(.system(size: 15, weight: .regular))
-                Spacer()
-                VStack(alignment: .trailing) {
-                    Text(memberExpense.dueType?.oweText ?? "")
-                        .foregroundStyle(memberExpense.dueType?.highlightedColor ?? .red)
-                        .font(.system(size: 10))
-                    Text("AED \(String(format: "%.2f", memberExpense.totalDue ?? 0))")
-                        .foregroundStyle(memberExpense.dueType?.highlightedColor  ?? .red)
-                        .font(.system(size: 14))
-                }.padding(.trailing)
-            }
-        }
-        VStack{
-            HStack(alignment: .top) {
-                if memberExpense.expensesOverview.count > 0 {
-                    TreePathView(numberOfBranches: .constant(memberExpense.expensesOverview.count))
-                        .padding(.leading)
-                }
-                VStack(alignment: .leading) {
-                    
-                    ForEach(memberExpense.expensesOverview, id: \.self) { expenseOverview in
-                        Text(
-                            TextFormatters.formatExpenseText(
-                                fullText: expenseOverview.getOverviewSummary(with: memberExpense.memberName ?? ""),
-                                highlighted: "AED \(expenseOverview.dueAmount ?? 0)",
-                                color: expenseOverview.dueType?.highlightedColor ?? .red)
-                        )
-                        .modifier(ExpenseListStyle())
+        VStack {
+            VStack(alignment: .leading) {
+                HStack {
+                    Image(memberExpense.profileImage ?? "")
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 30.0, height: 30.0)
+                        .clipShape(Circle())
+                    Text(memberExpense.memberName ?? "")
+                        .font(.system(size: 13, weight: .regular))
+                    Spacer()
+                    VStack(alignment: .trailing) {
+                        Text(memberExpense.dueType?.oweText ?? "")
+                            .foregroundStyle(memberExpense.dueType?.highlightedColor ?? .red)
+                            .font(.system(size: 10))
+                        Text("AED \(String(format: "%.2f", memberExpense.totalDue ?? 0))")
+                            .foregroundStyle(memberExpense.dueType?.highlightedColor  ?? .red)
+                            .font(.system(size: 12))
                     }
+                }
+            }
+            VStack{
+                HStack(alignment: .top) {
+                    if memberExpense.expensesOverview.count > 0 {
+                        TreePathView(numberOfBranches: .constant(memberExpense.expensesOverview.count))
+                    }
+                    VStack(alignment: .leading) {
+                        
+                        ForEach(memberExpense.expensesOverview, id: \.self) { expenseOverview in
+                            Text(
+                                TextFormatters.formatExpenseText(
+                                    fullText: expenseOverview.getOverviewSummary(with: memberExpense.memberName ?? ""),
+                                    highlighted: "AED \(expenseOverview.dueAmount ?? 0)",
+                                    color: expenseOverview.dueType?.highlightedColor ?? .red)
+                            )
+                            .modifier(ExpenseListStyle())
+                        }
+                    }.padding(.leading, -45)
                 }
             }
         }
@@ -70,17 +70,17 @@ struct TreePathView: View {
     var body: some View {
         Path { path in
             guard let totalBranches = ExpenseBranch(rawValue: numberOfBranches) else { return }
-            path.move(to: CGPoint(x: 20, y: 0))
-            path.addLine(to: CGPoint(x: 20, y: totalBranches.verticalOffset))
+            path.move(to: CGPoint(x: -60, y: 0))
+            path.addLine(to: CGPoint(x: -60, y: totalBranches.verticalOffset))
 
             for index in 1...numberOfBranches {
                 guard let expenseBranch = ExpenseBranch(rawValue: index) else { return }
-                path.move(to: CGPoint(x: 20, y: expenseBranch.verticalOffset))
-                path.addLine(to: CGPoint(x: 50, y: expenseBranch.verticalOffset))
+                path.move(to: CGPoint(x: -60, y: expenseBranch.verticalOffset))
+                path.addLine(to: CGPoint(x: -40, y: expenseBranch.verticalOffset))
             }
         }
         .stroke(Color(.systemGray4), lineWidth: 0.5)
-        .frame(width: 50, height: 45)
+        .frame(width: 1, height: 1)
     }
 }
 
@@ -99,7 +99,7 @@ enum ExpenseBranch: Int {
 }
 
 #Preview {
-    MemberExpenseView(memberExpense: .constant(Expense(memberName: "Althaf bhai",
+    MemberExpenseView(memberExpense: Expense(memberName: "Althaf bhai",
                                                        totalDue: 10.95,
                                                        dueType: .debt,
                                                        profileImage: "person_3",
@@ -113,5 +113,5 @@ enum ExpenseBranch: Int {
                                                            ExpenseOverview(dueType: .credit,
                                                                            groupName: "movie group",
                                                                            dueAmount: 13.25)
-                                                       ])))
+                                                       ]))
 }

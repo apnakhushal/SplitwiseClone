@@ -37,6 +37,7 @@
 				Models/Expense.swift,
 				Utilities/Extensions/TextFormatters.swift,
 				Views/DashboardFriendsView.swift,
+				Views/FriendsDetailView.swift,
 				Views/FriendsExpensesView.swift,
 				Views/MemberExpenseView.swift,
 			);
@@ -49,6 +50,7 @@
 				Models/Expense.swift,
 				Utilities/Extensions/TextFormatters.swift,
 				Views/DashboardFriendsView.swift,
+				Views/FriendsDetailView.swift,
 				Views/FriendsExpensesView.swift,
 				Views/MemberExpenseView.swift,
 			);

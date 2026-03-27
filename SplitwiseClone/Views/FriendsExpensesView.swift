@@ -18,6 +18,10 @@ struct FriendsExpensesView: View {
         !searchText.isEmpty
     }
     
+    @State private var selectedExpense: Expense?
+    @State private var scrollToTop = false
+    @State private var itemIndex = 0
+    
     private var filteredExpenses: [Expense] {
         if searchText.isEmpty && selectedFilterType == .all {
             return expensesMockData
@@ -43,11 +47,13 @@ struct FriendsExpensesView: View {
                                 color: Color.red)
                         )
                         .font(.system(size: 18, weight: .bold))
+                        .padding()
                         Spacer()
                         Button {
                             isShowingSheet.toggle()
                         } label: {
                             Image(systemName: "line.3.horizontal.decrease.circle.fill")
+                                .padding()
                         }
                         .sheet(isPresented: $isShowingSheet) {
                             VStack(alignment: .leading) {
@@ -69,6 +75,7 @@ struct FriendsExpensesView: View {
                                     .onTapGesture {
                                         selectedFilterType = filterType
                                         isShowingSheet = false // Auto-dismiss after selection
+                                        scrollToTop.toggle()
                                     }
                                 }
                                 .listStyle(.plain)
@@ -80,24 +87,42 @@ struct FriendsExpensesView: View {
                     }
                 }
                 Spacer()
-                List(
-                    Binding(
-                        get: { filteredExpenses },
-                        set: { _ in }
-                    ) , id: \.self) { expense in
-                        MemberExpenseView(memberExpense: expense)
-                            .listRowSeparator(.hidden)
-                            .listRowInsets(
-                                EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 0)
-                            )
+                NavigationStack {
+                    ScrollViewReader { proxy in
+                        List(filteredExpenses, id: \.self) { expense in
+                            NavigationLink {
+                                FriendsDetailView()
+                            } label: {
+                                detailExpenseView(for: expense)
+                                    .id(itemIndex)
+                            }
+                            .onAppear {
+                                itemIndex += 1
+                            }
+                        }
+                        .environment(\.defaultMinListRowHeight, 50)
+                        .scrollContentBackground(.hidden)
+                        .listStyle(.plain)
+                        .background(Color.clear)
+                        .searchable(text: $searchText)
+                        .navigationLinkIndicatorVisibility(.hidden)
+                        .onChange(of: scrollToTop) { _ in
+                            withAnimation {
+                                proxy.scrollTo(0, anchor: .top)
+                            }
+                        }
                     }
-                    .environment(\.defaultMinListRowHeight, 10)
-                    .scrollContentBackground(.hidden)
-                    .listStyle(.plain)
-                    .background(Color.clear)
-                    .searchable(text: $searchText)
-            }.padding()
+            }
+            }
         }
+    }
+    
+    private func detailExpenseView(for expense: Expense) -> some View {
+        MemberExpenseView(memberExpense: expense)
+            .listRowSeparator(.hidden)
+            .listRowInsets(
+                EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 0)
+            )
     }
 }
 
