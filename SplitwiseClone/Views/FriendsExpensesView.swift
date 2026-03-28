@@ -20,7 +20,6 @@ struct FriendsExpensesView: View {
     
     @State private var selectedExpense: Expense?
     @State private var scrollToTop = false
-    @State private var itemIndex = 0
     
     private var filteredExpenses: [Expense] {
         if searchText.isEmpty && selectedFilterType == .all {
@@ -89,16 +88,14 @@ struct FriendsExpensesView: View {
                 Spacer()
                 NavigationStack {
                     ScrollViewReader { proxy in
-                        List(filteredExpenses, id: \.self) { expense in
+                        List(filteredExpenses.indices, id: \.self) { index in
                             NavigationLink {
                                 FriendsDetailView()
                             } label: {
-                                detailExpenseView(for: expense)
-                                    .id(itemIndex)
+                                detailExpenseView(for: filteredExpenses[index])
                             }
-                            .onAppear {
-                                itemIndex += 1
-                            }
+                            .id(index)
+                            .listRowSeparator(.hidden)
                         }
                         .environment(\.defaultMinListRowHeight, 50)
                         .scrollContentBackground(.hidden)
