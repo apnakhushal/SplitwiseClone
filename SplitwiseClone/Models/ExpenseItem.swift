@@ -37,6 +37,10 @@ extension ExpenseItem {
         return "AED \(dueAmount.formatted(.number.precision(.fractionLength(2))))"
     }
 
+    var isSettledUpOrNoBalance: Bool {
+        return dueType == .settled || dueType == .noBalance
+    }
+
     var paymentStatement: String {
         guard let totalAmount, let paidBy else { return "" }
         switch dueType {

@@ -100,12 +100,13 @@ struct FriendsDetailView: View {
 
                 VStack(spacing: 4) {
                     Text(expenseOverview.memberName ?? "")
-                        .font(.title2.bold())
+                        .font(.title2)
+                        .fontWeight(.semibold)
                         .foregroundColor(.black.opacity(0.8))
 
                     Text(expenseOverview.summary)
                         .foregroundColor(expenseOverview.dueType?.highlightedColor)
-                        .font(.system(size: 18, weight: .bold))
+                        .font(.system(size: 18, weight: .semibold))
                 }
                 .opacity(largeOpacity)
             }
@@ -122,7 +123,8 @@ struct FriendsDetailView: View {
                 }
                 Spacer()
                 Text(expenseOverview.memberName ?? "")
-                    .font(.title3.bold())
+                    .font(.title3)
+                    .fontWeight(.semibold)
                     .foregroundColor(.black.opacity(0.8))
                 Spacer()
                 Image(systemName: "ellipsis")

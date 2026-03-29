@@ -16,20 +16,22 @@ struct MemberExpenseView: View {
                     Image(memberExpense.profileImage ?? "")
                         .resizable()
                         .scaledToFill()
-                        .frame(width: 30.0, height: 30.0)
+                        .frame(width: 40.0, height: 40.0)
                         .clipShape(Circle())
                     Text(memberExpense.memberName ?? "")
-                        .font(.system(size: 13, weight: .regular))
+                        .font(.system(size: 16, weight: .regular))
+                        .foregroundStyle(.black.opacity(0.8))
                     Spacer()
                     VStack(alignment: .trailing) {
-                        let isCreditOrDebit = memberExpense.dueType == .credit || memberExpense.dueType == .debt
+
                         Text(memberExpense.dueType?.oweText ?? "")
                             .foregroundStyle(memberExpense.dueType?.highlightedColor ?? .red)
-                            .font(.system(size: isCreditOrDebit ? 10 : 12))
-                        if isCreditOrDebit {
+                            .font(.system(size: memberExpense.isSettledUpOrNoBalance ? 14 : 12))
+
+                        if !memberExpense.isSettledUpOrNoBalance {
                             Text("AED \(String(format: "%.2f", memberExpense.totalDue ?? 0))")
                                 .foregroundStyle(memberExpense.dueType?.highlightedColor  ?? .red)
-                                .font(.system(size: 12))
+                                .font(.system(size: 16))
                         }
                     }
                 }
@@ -62,7 +64,7 @@ struct ExpenseListStyle: ViewModifier {
     func body(content: Content) -> some View {
         content
             .foregroundStyle(Color(.gray))
-            .font(.system(size: 12, weight: .regular))
+            .font(.system(size: 13, weight: .regular))
             .lineLimit(1)
             .frame(height: 10)
     }

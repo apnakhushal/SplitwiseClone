@@ -21,6 +21,10 @@ extension Expense {
         return "AED \(totalDue.formatted(.number.precision(.fractionLength(2))))"
     }
 
+    var isSettledUpOrNoBalance: Bool {
+        return dueType == .settled || dueType == .noBalance
+    }
+
     var summary: String {
         guard let dueType else { return "" }
         var prefix = ""

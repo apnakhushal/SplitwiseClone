@@ -12,36 +12,47 @@ struct ExpenseItemView: View {
 
     var body: some View {
         HStack(alignment: .center, spacing: 15) {
-            VStack(alignment: .center, spacing: 0) {
+            VStack(alignment: .center, spacing: 2) {
                 Text(expenseItem.formattedMonth)
+                    .font(.system(size: 16, weight: .regular))
+                    .foregroundStyle(Color.black.opacity(0.6))
+
                 Text(expenseItem.formattedDay)
+                    .font(.system(size: 16, weight: .medium))
+                    .foregroundStyle(Color.black.opacity(0.6))
             }
 
             expenseItem.expenseCategory?.icon
                 .resizable()
-                .frame(width: 45, height: 45)
+                .scaledToFit()
+                .frame(width: 35, height: 35)
 
             VStack(alignment: .leading, spacing: 5) {
                 Text(expenseItem.title ?? "")
+                    .font(.system(size: 16, weight: .medium))
+                    .foregroundStyle(.black.opacity(0.7))
                     .lineLimit(1)
                 Text(expenseItem.paymentStatement)
-                    .font(.footnote)
-                    .foregroundStyle(.gray)
+                    .font(.system(size: 13, weight: .regular))
+                    .foregroundStyle(Color(.systemGray))
                     .lineLimit(1)
             }
 
             Spacer()
 
-            VStack(alignment: .trailing, spacing: 5) {
+            VStack(alignment: .trailing, spacing: 2) {
+
                 Text(expenseItem.dueStatement)
-                    .font(.caption)
+                    .font(.system(size: 15, weight: .regular))
                     .foregroundStyle(expenseItem.dueType?.highlightedColor  ?? .red)
                     .lineLimit(1)
 
-                Text(expenseItem.formattedDueAmount)
-                    .font(.caption)
-                    .foregroundStyle(expenseItem.dueType?.highlightedColor  ?? .red)
-                    .lineLimit(1)
+                if !expenseItem.isSettledUpOrNoBalance {
+                    Text(expenseItem.formattedDueAmount)
+                        .font(.system(size: 17, weight: .medium))
+                        .foregroundStyle(expenseItem.dueType?.highlightedColor  ?? .red)
+                        .lineLimit(1)
+                }
             }
         }
         .padding(.vertical, 8)
