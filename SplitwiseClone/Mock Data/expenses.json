@@ -1,0 +1,202 @@
+[
+    {
+        "title": "Starbucks Coffee",
+        "paidBy": "Khushal",
+        "dueAmount": 12.00,
+        "totalAmount": 24.00,
+        "transactionDate": "2026-03-28T08:15:00Z",
+        "dueType": "credit",
+        "expenseCategory": "food",
+        "groupName": "Daily"
+    },
+    {
+        "title": "Careem to Office",
+        "paidBy": "Vaibhav",
+        "dueAmount": 15.00,
+        "totalAmount": 30.00,
+        "transactionDate": "2026-03-27T18:45:00Z",
+        "dueType": "debt",
+        "expenseCategory": "taxi",
+        "groupName": "Work"
+    },
+    {
+        "title": "Dune 2 Movie Tickets",
+        "paidBy": "Khushal",
+        "dueAmount": 45.00,
+        "totalAmount": 90.00,
+        "transactionDate": "2026-03-25T20:00:00Z",
+        "dueType": "credit",
+        "expenseCategory": "movie",
+        "groupName": "Friends"
+    },
+    {
+        "title": "Zara New Shirt",
+        "paidBy": "Self",
+        "dueAmount": 0.00,
+        "totalAmount": 150.00,
+        "transactionDate": "2026-03-20T14:30:00Z",
+        "dueType": "noBalance",
+        "expenseCategory": "shopping",
+        "groupName": ""
+    },
+    {
+        "title": "Flight to Riyadh",
+        "paidBy": "Khushal",
+        "dueAmount": 400.00,
+        "totalAmount": 800.00,
+        "transactionDate": "2026-03-15T09:00:00Z",
+        "dueType": "credit",
+        "expenseCategory": "travel",
+        "groupName": "Business Trip"
+    },
+    {
+        "title": "Burger King Dinner",
+        "paidBy": "Amal",
+        "dueAmount": 30.00,
+        "totalAmount": 60.00,
+        "transactionDate": "2026-03-10T21:00:00Z",
+        "dueType": "debt",
+        "expenseCategory": "food",
+        "groupName": "Friends"
+    },
+    {
+        "title": "Netflix Monthly",
+        "paidBy": "Khushal",
+        "dueAmount": 20.00,
+        "totalAmount": 40.00,
+        "transactionDate": "2026-02-28T10:00:00Z",
+        "dueType": "credit",
+        "expenseCategory": "movie",
+        "groupName": "Family"
+    },
+    {
+        "title": "RTA Parking",
+        "paidBy": "Self",
+        "dueAmount": 0.00,
+        "totalAmount": 10.00,
+        "transactionDate": "2026-02-22T11:20:00Z",
+        "dueType": "settled",
+        "expenseCategory": "others",
+        "groupName": ""
+    },
+    {
+        "title": "Hotel Stay - Dubai",
+        "paidBy": "Khushal",
+        "dueAmount": 250.00,
+        "totalAmount": 500.00,
+        "transactionDate": "2026-02-15T12:00:00Z",
+        "dueType": "credit",
+        "expenseCategory": "travel",
+        "groupName": "Weekend Getaway"
+    },
+    {
+        "title": "Airport Taxi",
+        "paidBy": "Vaibhav",
+        "dueAmount": 40.00,
+        "totalAmount": 80.00,
+        "transactionDate": "2026-02-14T05:30:00Z",
+        "dueType": "debt",
+        "expenseCategory": "taxi",
+        "groupName": "Business Trip"
+    },
+    {
+        "title": "Birthday Cake - Rahul",
+        "paidBy": "Khushal",
+        "dueAmount": 60.00,
+        "totalAmount": 120.00,
+        "transactionDate": "2026-02-10T19:00:00Z",
+        "dueType": "credit",
+        "expenseCategory": "birthday",
+        "groupName": "Office"
+    },
+    {
+        "title": "Nike Shoes",
+        "paidBy": "Self",
+        "dueAmount": 0.00,
+        "totalAmount": 350.00,
+        "transactionDate": "2026-02-05T16:45:00Z",
+        "dueType": "noBalance",
+        "expenseCategory": "shopping",
+        "groupName": ""
+    },
+    {
+        "title": "Grocery Shopping",
+        "paidBy": "Amal",
+        "dueAmount": 50.00,
+        "totalAmount": 100.00,
+        "transactionDate": "2026-01-28T13:10:00Z",
+        "dueType": "debt",
+        "expenseCategory": "food",
+        "groupName": "Roommates"
+    },
+    {
+        "title": "Gas Bill",
+        "paidBy": "Khushal",
+        "dueAmount": 15.00,
+        "totalAmount": 30.00,
+        "transactionDate": "2026-01-20T09:00:00Z",
+        "dueType": "credit",
+        "expenseCategory": "others",
+        "groupName": "Home"
+    },
+    {
+        "title": "New Year Movie Night",
+        "paidBy": "Vaibhav",
+        "dueAmount": 25.00,
+        "totalAmount": 50.00,
+        "transactionDate": "2026-01-02T22:30:00Z",
+        "dueType": "debt",
+        "expenseCategory": "movie",
+        "groupName": "Friends"
+    },
+    {
+        "title": "Museum Entry",
+        "paidBy": "Khushal",
+        "dueAmount": 30.00,
+        "totalAmount": 60.00,
+        "transactionDate": "2026-01-12T11:00:00Z",
+        "dueType": "credit",
+        "expenseCategory": "travel",
+        "groupName": "Tourism"
+    },
+    {
+        "title": "Uber to Airport",
+        "paidBy": "Vaibhav",
+        "dueAmount": 50.00,
+        "totalAmount": 100.00,
+        "transactionDate": "2026-01-10T04:00:00Z",
+        "dueType": "debt",
+        "expenseCategory": "taxi",
+        "groupName": "Tourism"
+    },
+    {
+        "title": "Birthday Party Dinner",
+        "paidBy": "Amal",
+        "dueAmount": 100.00,
+        "totalAmount": 400.00,
+        "transactionDate": "2026-01-05T20:30:00Z",
+        "dueType": "debt",
+        "expenseCategory": "birthday",
+        "groupName": "Office"
+    },
+    {
+        "title": "Apple Store - Cable",
+        "paidBy": "Self",
+        "dueAmount": 0.00,
+        "totalAmount": 79.00,
+        "transactionDate": "2026-01-03T15:00:00Z",
+        "dueType": "settled",
+        "expenseCategory": "shopping",
+        "groupName": ""
+    },
+    {
+        "title": "Surprise Gift Decor",
+        "paidBy": "Khushal",
+        "dueAmount": 20.00,
+        "totalAmount": 40.00,
+        "transactionDate": "2025-12-30T10:00:00Z",
+        "dueType": "credit",
+        "expenseCategory": "birthday",
+        "groupName": "Family"
+    }
+]

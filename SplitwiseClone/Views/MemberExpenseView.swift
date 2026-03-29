@@ -22,12 +22,15 @@ struct MemberExpenseView: View {
                         .font(.system(size: 13, weight: .regular))
                     Spacer()
                     VStack(alignment: .trailing) {
+                        let isCreditOrDebit = memberExpense.dueType == .credit || memberExpense.dueType == .debt
                         Text(memberExpense.dueType?.oweText ?? "")
                             .foregroundStyle(memberExpense.dueType?.highlightedColor ?? .red)
-                            .font(.system(size: 10))
-                        Text("AED \(String(format: "%.2f", memberExpense.totalDue ?? 0))")
-                            .foregroundStyle(memberExpense.dueType?.highlightedColor  ?? .red)
-                            .font(.system(size: 12))
+                            .font(.system(size: isCreditOrDebit ? 10 : 12))
+                        if isCreditOrDebit {
+                            Text("AED \(String(format: "%.2f", memberExpense.totalDue ?? 0))")
+                                .foregroundStyle(memberExpense.dueType?.highlightedColor  ?? .red)
+                                .font(.system(size: 12))
+                        }
                     }
                 }
             }
@@ -70,13 +73,13 @@ struct TreePathView: View {
     var body: some View {
         Path { path in
             guard let totalBranches = ExpenseBranch(rawValue: numberOfBranches) else { return }
-            path.move(to: CGPoint(x: -60, y: 0))
-            path.addLine(to: CGPoint(x: -60, y: totalBranches.verticalOffset))
+            path.move(to: CGPoint(x: -65, y: 0))
+            path.addLine(to: CGPoint(x: -65, y: totalBranches.verticalOffset))
 
             for index in 1...numberOfBranches {
                 guard let expenseBranch = ExpenseBranch(rawValue: index) else { return }
-                path.move(to: CGPoint(x: -60, y: expenseBranch.verticalOffset))
-                path.addLine(to: CGPoint(x: -40, y: expenseBranch.verticalOffset))
+                path.move(to: CGPoint(x: -65, y: expenseBranch.verticalOffset))
+                path.addLine(to: CGPoint(x: -45, y: expenseBranch.verticalOffset))
             }
         }
         .stroke(Color(.systemGray4), lineWidth: 0.5)
@@ -99,19 +102,21 @@ enum ExpenseBranch: Int {
 }
 
 #Preview {
-    MemberExpenseView(memberExpense: Expense(memberName: "Althaf bhai",
-                                                       totalDue: 10.95,
-                                                       dueType: .debt,
-                                                       profileImage: "person_3",
-                                                       expensesOverview: [
-                                                           ExpenseOverview(dueType: .debt,
-                                                                           groupName: "non-group",
-                                                                           dueAmount: 60.20),
-                                                           ExpenseOverview(dueType: .credit,
-                                                                           groupName: "Food",
-                                                                           dueAmount: 36),
-                                                           ExpenseOverview(dueType: .credit,
-                                                                           groupName: "movie group",
-                                                                           dueAmount: 13.25)
-                                                       ]))
+    MemberExpenseView(
+        memberExpense: Expense(
+            memberName: "Althaf bhai",
+            totalDue: 10.95,
+            dueType: .debt,
+            profileImage: "person_3",
+            expensesOverview: [
+                ExpenseOverview(dueType: .debt,
+                                groupName: "non-group",
+                                dueAmount: 60.20),
+                ExpenseOverview(dueType: .credit,
+                                groupName: "Food",
+                                dueAmount: 36),
+                ExpenseOverview(dueType: .credit,
+                                groupName: "movie group",
+                                dueAmount: 13.25)
+            ]))
 }

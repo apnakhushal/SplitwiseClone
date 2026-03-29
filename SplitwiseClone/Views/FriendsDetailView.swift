@@ -11,11 +11,15 @@ struct FriendsDetailView: View {
 
     @Environment(\.dismiss) private var dismiss
     
-    private let maxHeight: CGFloat = 260
-    private let minHeight: CGFloat = 90
-    
+    private let maxHeight: CGFloat = 220
+    private let minHeight: CGFloat = 60
+
     @State private var scrollOffset: CGFloat = 0
-    
+
+    let expenseOverview: Expense
+
+    @State private var expenses: [ExpenseItem] = []
+
     var body: some View {
         ZStack(alignment: .top) {
             
@@ -36,19 +40,24 @@ struct FriendsDetailView: View {
                                     }
                             }
                         )
-                    
-                    // Content
-                    VStack(spacing: 16) {
-                        ForEach(0..<25) { i in
-                            row(index: i)
+
+                    LazyVStack(spacing: 10) {
+                        ForEach(expenses) { expenseItem in
+                            ExpenseItemView(expenseItem: expenseItem)
                         }
                     }
-                    .padding()
                 }
             }
             .coordinateSpace(name: "scroll")
             
             header
+        }
+        .task {
+            do {
+                self.expenses = try await MockDataService.fetchExpenses()
+            } catch {
+                print("Failed to load: \(error)")
+            }
         }
         .toolbar(.hidden, for: .navigationBar)
         .ignoresSafeArea()
@@ -62,7 +71,7 @@ struct FriendsDetailView: View {
             Rectangle()
                 .fill(
                     LinearGradient(
-                        colors: [Color.green, Color.blue],
+                        colors: [Color.white, Color.white],
                         startPoint: .topLeading,
                         endPoint: .bottomTrailing
                     )
@@ -75,24 +84,28 @@ struct FriendsDetailView: View {
                         dismiss()
                     }) {
                         Image(systemName: "chevron.left")
+                            .fontWeight(.bold)
+                            .foregroundStyle(.black)
                     }
                     Spacer()
                 }
                 .padding(.leading)
                 .foregroundColor(.white)
-                Image(systemName: "person.circle.fill")
+                Image(expenseOverview.profileImage ?? "")
                     .resizable()
-                    .frame(width: 90, height: 90)
-                    .foregroundColor(.white)
+                    .scaledToFill()
+                    .frame(width: 60.0, height: 60.0)
+                    .clipShape(Circle())
                     .opacity(largeOpacity)
-                
+
                 VStack(spacing: 4) {
-                    Text("John Doe")
+                    Text(expenseOverview.memberName ?? "")
                         .font(.title2.bold())
-                        .foregroundColor(.white)
-                    
-                    Text("You owe ₹2,450")
-                        .foregroundColor(.white.opacity(0.9))
+                        .foregroundColor(.black.opacity(0.8))
+
+                    Text(expenseOverview.summary)
+                        .foregroundColor(expenseOverview.dueType?.highlightedColor)
+                        .font(.system(size: 18, weight: .bold))
                 }
                 .opacity(largeOpacity)
             }
@@ -104,10 +117,13 @@ struct FriendsDetailView: View {
                     dismiss()
                 }) {
                     Image(systemName: "chevron.left")
+                        .fontWeight(.bold)
+                        .foregroundStyle(.black)
                 }
                 Spacer()
-                Text("John Doe")
-                    .font(.headline)
+                Text(expenseOverview.memberName ?? "")
+                    .font(.title3.bold())
+                    .foregroundColor(.black.opacity(0.8))
                 Spacer()
                 Image(systemName: "ellipsis")
             }
@@ -140,29 +156,23 @@ struct FriendsDetailView: View {
     private var compactOpacity: Double {
         Double(collapseProgress)
     }
-    
-    // MARK: - Row
-    
-    private func row(index: Int) -> some View {
-        HStack {
-            VStack(alignment: .leading) {
-                Text("Dinner \(index)")
-                    .font(.headline)
-                Text("Paid by Alex")
-                    .foregroundColor(.gray)
-            }
-            Spacer()
-            Text("₹\(index * 120)")
-                .font(.headline)
-        }
-        .padding()
-        .background(
-            RoundedRectangle(cornerRadius: 16)
-                .fill(Color(.secondarySystemBackground))
-        )
-    }
 }
 
 #Preview {
-    FriendsDetailView()
+    FriendsDetailView(
+        expenseOverview: Expense(
+            memberName: "Preeteesh",
+            totalDue: 4928.20,
+            dueType: .debt,
+            profileImage: "person_2",
+            expensesOverview: [
+                ExpenseOverview(dueType: .debt,
+                                groupName: "non-group",
+                                dueAmount: 4504.02),
+                ExpenseOverview(dueType: .debt,
+                                groupName: "Food",
+                                dueAmount: 424.18)
+            ]
+        )
+    )
 }

@@ -8,52 +8,55 @@
 import SwiftUI
 
 struct ExpenseItemView: View {
-    @Binding var expenseItem: ExpenseItem
+    var expenseItem: ExpenseItem
 
     var body: some View {
-        HStack {
-            Spacer(minLength: 5)
-
-            VStack(alignment: .center) {
+        HStack(alignment: .center, spacing: 15) {
+            VStack(alignment: .center, spacing: 0) {
                 Text(expenseItem.formattedMonth)
                 Text(expenseItem.formattedDay)
             }
-            Spacer(minLength: 5)
+
             expenseItem.expenseCategory?.icon
                 .resizable()
                 .frame(width: 45, height: 45)
-            Spacer(minLength: 5)
-            VStack(alignment: .leading) {
+
+            VStack(alignment: .leading, spacing: 5) {
                 Text(expenseItem.title ?? "")
                     .lineLimit(1)
                 Text(expenseItem.paymentStatement)
-                    .font(.caption)
+                    .font(.footnote)
                     .foregroundStyle(.gray)
                     .lineLimit(1)
             }
-            Spacer(minLength: 5)
-            VStack(alignment: .trailing) {
+
+            Spacer()
+
+            VStack(alignment: .trailing, spacing: 5) {
                 Text(expenseItem.dueStatement)
                     .font(.caption)
+                    .foregroundStyle(expenseItem.dueType?.highlightedColor  ?? .red)
                     .lineLimit(1)
+
                 Text(expenseItem.formattedDueAmount)
                     .font(.caption)
-                    .foregroundStyle(.gray)
+                    .foregroundStyle(expenseItem.dueType?.highlightedColor  ?? .red)
                     .lineLimit(1)
             }
-            Spacer(minLength: 5)
         }
+        .padding(.vertical, 8)
+        .padding(.horizontal, 16)
     }
 }
 
 #Preview {
-    ExpenseItemView(expenseItem: .constant(
-        ExpenseItem(title: "12th Feb Taxi going",
-                    paidBy: "Khushal",
-                    dueAmount: 9.0,
-                    totalAmount: 18.0,
-                    transactionDate: Date(),
-                    dueType: .credit,
-                    expenseCategory: .taxi,
-                    groupName: "")))
+    ExpenseItemView(expenseItem: ExpenseItem(
+        title: "12th Feb Taxi going",
+        paidBy: "Khushal",
+        dueAmount: 9.0,
+        totalAmount: 18.0,
+        transactionDate: Date(),
+        dueType: .credit,
+        expenseCategory: .taxi,
+        groupName: ""))
 }

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct FriendsExpensesView: View {
-    @State private var expensesMockData = Expense.expensesMockData
+    @State private var overviewExpenses: [Expense] = []
     @State private var isShowingSheet = false
     @State private var selectedFilterType: ExpenseFilter = .all
     let availableFilterOptions: [ExpenseFilter] = [.all, .pendingDues, .pendingCredits]
@@ -23,9 +23,9 @@ struct FriendsExpensesView: View {
     
     private var filteredExpenses: [Expense] {
         if searchText.isEmpty && selectedFilterType == .all {
-            return expensesMockData
+            return overviewExpenses
         } else {
-            let searchedExpenses = searchText.isEmpty ? expensesMockData : expensesMockData.filter {
+            let searchedExpenses = searchText.isEmpty ? overviewExpenses : overviewExpenses.filter {
                 $0.memberName?.localizedCaseInsensitiveContains(searchText) ?? false
             }
             return selectedFilterType == .all ? searchedExpenses : searchedExpenses.filter {
@@ -90,7 +90,7 @@ struct FriendsExpensesView: View {
                     ScrollViewReader { proxy in
                         List(filteredExpenses.indices, id: \.self) { index in
                             NavigationLink {
-                                FriendsDetailView()
+                                FriendsDetailView(expenseOverview: filteredExpenses[index])
                             } label: {
                                 detailExpenseView(for: filteredExpenses[index])
                             }
@@ -110,6 +110,13 @@ struct FriendsExpensesView: View {
                         }
                     }
             }
+            }
+        }
+        .task {
+            do {
+                self.overviewExpenses = try await MockDataService.fetchOverviewExpenses()
+            } catch {
+                print("Failed to load: \(error)")
             }
         }
     }

@@ -1,0 +1,274 @@
+[
+    {
+        "memberName": "Vaibhav Sharma",
+        "totalDue": 145.50,
+        "dueType": "debt",
+        "profileImage": "person_1",
+        "expensesOverview": [
+            {
+                "dueType": "debt",
+                "groupName": "Dubai Trip",
+                "dueAmount": 100.00
+            },
+            {
+                "dueType": "debt",
+                "groupName": "Roommates",
+                "dueAmount": 45.50
+            }
+        ]
+    },
+    {
+        "memberName": "Khushal",
+        "totalDue": 80.00,
+        "dueType": "credit",
+        "profileImage": "person_2",
+        "expensesOverview": [
+            {
+                "dueType": "credit",
+                "groupName": "Office Lunch",
+                "dueAmount": 50.00
+            },
+            {
+                "dueType": "credit",
+                "groupName": "Movie Night",
+                "dueAmount": 30.00
+            }
+        ]
+    },
+    {
+        "memberName": "Amal Zaid",
+        "totalDue": 0.00,
+        "dueType": "settled",
+        "profileImage": "person_3",
+        "expensesOverview": [
+            {
+                "dueType": "settled",
+                "groupName": "Weekend Getaway",
+                "dueAmount": 0.00
+            }
+        ]
+    },
+    {
+        "memberName": "Sarah Jenkins",
+        "totalDue": 210.00,
+        "dueType": "debt",
+        "profileImage": "person_4",
+        "expensesOverview": [
+            {
+                "dueType": "debt",
+                "groupName": "Concert Tickets",
+                "dueAmount": 150.00
+            },
+            {
+                "dueType": "debt",
+                "groupName": "Dinner",
+                "dueAmount": 60.00
+            }
+        ]
+    },
+    {
+        "memberName": "Rahul Nair",
+        "totalDue": 35.00,
+        "dueType": "credit",
+        "profileImage": "person_5",
+        "expensesOverview": [
+            {
+                "dueType": "credit",
+                "groupName": "Cricket Turf",
+                "dueAmount": 35.00
+            }
+        ]
+    },
+    {
+        "memberName": "Jessica Alba",
+        "totalDue": 0.00,
+        "dueType": "noBalance",
+        "profileImage": "person_4",
+        "expensesOverview": []
+    },
+    {
+        "memberName": "Michael Scott",
+        "totalDue": 1200.00,
+        "dueType": "debt",
+        "profileImage": "person_6",
+        "expensesOverview": [
+            {
+                "dueType": "debt",
+                "groupName": "Office Party",
+                "dueAmount": 1000.00
+            },
+            {
+                "dueType": "debt",
+                "groupName": "Coffee",
+                "dueAmount": 200.00
+            }
+        ]
+    },
+    {
+        "memberName": "Dwight Schrute",
+        "totalDue": 15.75,
+        "dueType": "credit",
+        "profileImage": "person_7",
+        "expensesOverview": [
+            {
+                "dueType": "credit",
+                "groupName": "Beet Farm Visit",
+                "dueAmount": 15.75
+            }
+        ]
+    },
+    {
+        "memberName": "Pam Beesly",
+        "totalDue": 45.00,
+        "dueType": "debt",
+        "profileImage": "person_8",
+        "expensesOverview": [
+            {
+                "dueType": "debt",
+                "groupName": "Art Supplies",
+                "dueAmount": 45.00
+            }
+        ]
+    },
+    {
+        "memberName": "Jim Halpert",
+        "totalDue": 0.00,
+        "dueType": "settled",
+        "profileImage": "person_9",
+        "expensesOverview": [
+            {
+                "dueType": "settled",
+                "groupName": "Prank Fund",
+                "dueAmount": 0.00
+            }
+        ]
+    },
+    {
+        "memberName": "Rohan Mehra",
+        "totalDue": 500.00,
+        "dueType": "credit",
+        "profileImage": "person_10",
+        "expensesOverview": [
+            {
+                "dueType": "credit",
+                "groupName": "Rent Share",
+                "dueAmount": 500.00
+            }
+        ]
+    },
+    {
+        "memberName": "Ananya P",
+        "totalDue": 85.20,
+        "dueType": "debt",
+        "profileImage": "person_11",
+        "expensesOverview": [
+            {
+                "dueType": "debt",
+                "groupName": "Birthday Gift",
+                "dueAmount": 50.00
+            },
+            {
+                "dueType": "debt",
+                "groupName": "Uber Pool",
+                "dueAmount": 35.20
+            }
+        ]
+    },
+    {
+        "memberName": "David Goggins",
+        "totalDue": 0.00,
+        "dueType": "noBalance",
+        "profileImage": "person_12",
+        "expensesOverview": []
+    },
+    {
+        "memberName": "Elon T",
+        "totalDue": 10000.00,
+        "dueType": "credit",
+        "profileImage": "person_13",
+        "expensesOverview": [
+            {
+                "dueType": "credit",
+                "groupName": "SpaceX Tour",
+                "dueAmount": 10000.00
+            }
+        ]
+    },
+    {
+        "memberName": "Mark Z",
+        "totalDue": 2.50,
+        "dueType": "debt",
+        "profileImage": "person_4",
+        "expensesOverview": [
+            {
+                "dueType": "debt",
+                "groupName": "Server Cost",
+                "dueAmount": 2.50
+            }
+        ]
+    },
+    {
+        "memberName": "Tim Cook",
+        "totalDue": 999.00,
+        "dueType": "debt",
+        "profileImage": "person_7",
+        "expensesOverview": [
+            {
+                "dueType": "debt",
+                "groupName": "Apple Store",
+                "dueAmount": 999.00
+            }
+        ]
+    },
+    {
+        "memberName": "Satoshi N",
+        "totalDue": 0.12,
+        "dueType": "credit",
+        "profileImage": "person_5",
+        "expensesOverview": [
+            {
+                "dueType": "credit",
+                "groupName": "Blockchain Fee",
+                "dueAmount": 0.12
+            }
+        ]
+    },
+    {
+        "memberName": "Steve Rogers",
+        "totalDue": 75.00,
+        "dueType": "settled",
+        "profileImage": "person_2",
+        "expensesOverview": [
+            {
+                "dueType": "settled",
+                "groupName": "Avengers Gym",
+                "dueAmount": 75.00
+            }
+        ]
+    },
+    {
+        "memberName": "Tony Stark",
+        "totalDue": 5000.00,
+        "dueType": "debt",
+        "profileImage": "person_12",
+        "expensesOverview": [
+            {
+                "dueType": "debt",
+                "groupName": "Stark Expo",
+                "dueAmount": 4500.00
+            },
+            {
+                "dueType": "debt",
+                "groupName": "Cheeseburgers",
+                "dueAmount": 500.00
+            }
+        ]
+    },
+    {
+        "memberName": "Bruce Wayne",
+        "totalDue": 0.00,
+        "dueType": "noBalance",
+        "profileImage": "person_9",
+        "expensesOverview": []
+    }
+]

@@ -33,8 +33,14 @@
 		18182F152F1C01CF005E2670 /* Exceptions for "SplitwiseClone" folder in "SplitwiseCloneTests" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				Miscellenous/Enums/ExpenseCategory.swift,
 				Miscellenous/Enums/ExpenseFilter.swift,
+				Miscellenous/Enums/ExpenseType.swift,
+				"Mock Data/expenses.json",
+				"Mock Data/overviewExpenses.json",
 				Models/Expense.swift,
+				Models/ExpenseItem.swift,
+				Models/ExpenseOverview.swift,
 				Utilities/Extensions/TextFormatters.swift,
 				Views/DashboardFriendsView.swift,
 				Views/ExpenseItemView.swift,
@@ -47,8 +53,14 @@
 		18182F162F1C01CF005E2670 /* Exceptions for "SplitwiseClone" folder in "SplitwiseCloneUITests" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				Miscellenous/Enums/ExpenseCategory.swift,
 				Miscellenous/Enums/ExpenseFilter.swift,
+				Miscellenous/Enums/ExpenseType.swift,
+				"Mock Data/expenses.json",
+				"Mock Data/overviewExpenses.json",
 				Models/Expense.swift,
+				Models/ExpenseItem.swift,
+				Models/ExpenseOverview.swift,
 				Utilities/Extensions/TextFormatters.swift,
 				Views/DashboardFriendsView.swift,
 				Views/ExpenseItemView.swift,
