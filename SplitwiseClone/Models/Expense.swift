@@ -27,10 +27,59 @@ struct ExpenseOverview: Codable, Hashable {
     }
 }
 
+struct ExpenseItem: Codable, Hashable {
+    let title: String?
+    let paidBy: String?
+    let dueAmount: Double?
+    let totalAmount: Double?
+    let transactionDate: Date?
+    let dueType: ExpenseType?
+    let expenseCategory: ExpenseCategory?
+    let groupName: String?
+}
+
+extension ExpenseItem {
+    var formattedDay: String {
+        transactionDate?.formatted(.dateTime.day()) ?? ""
+    }
+
+    var formattedMonth: String {
+        transactionDate?.formatted(.dateTime.month(.abbreviated)) ?? ""
+    }
+
+    var formattedDueAmount: String {
+        guard let dueAmount else { return "" }
+        return "AED \(dueAmount.formatted(.number.precision(.fractionLength(2))))"
+    }
+
+    var paymentStatement: String {
+        guard let totalAmount else { return "" }
+        switch dueType {
+        case .credit:
+            return "You paid AED \(totalAmount.formatted(.number.precision(.fractionLength(2))))"
+        case .debt, .noBalance:
+            return "\(paidBy) paid AED \(totalAmount.formatted(.number.precision(.fractionLength(2))))"
+        default:
+            return ""
+        }
+    }
+
+    var dueStatement: String {
+        switch dueType {
+        case .credit: "you lent"
+        case .debt: "you borrowed"
+        case .settled: "settled up"
+        case .noBalance: "no balance"
+        default: "no balance"
+        }
+    }
+}
+
 enum ExpenseType: String, Codable {
     case credit
     case debt
     case settled
+    case noBalance
 }
 
 extension ExpenseType {
@@ -63,6 +112,45 @@ extension ExpenseType {
         case .credit: "owes you"
         case .debt: "you owe"
         case .settled: "settled up"
+        case .noBalance: "no balance"
+        }
+    }
+
+    var expenseMessage: String {
+        switch self {
+        case .credit: "you lent"
+        case .debt: "you borrowed"
+        case .settled: "settled up"
+        case .noBalance: "no balance"
+        }
+    }
+}
+
+enum ExpenseCategory: String, Codable {
+    case food
+    case travel
+    case taxi
+    case movie
+    case shopping
+    case birthday
+    case others
+
+    var icon: Image {
+        switch self {
+        case .food:
+            Image(.food)
+        case .travel:
+            Image(.travel)
+        case .taxi:
+            Image(.taxi)
+        case .movie:
+            Image(.movie)
+        case .shopping:
+            Image(.shopping)
+        case .birthday:
+            Image(.birthday)
+        case .others:
+            Image(.others)
         }
     }
 }
